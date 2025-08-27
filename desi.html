@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Configuration - FIREFLY</title>
+  <link rel="stylesheet" href="css\style.css" />
+  <script src="js\script.js" defer></script>
+</head>
+<body>
+  <!-- Topbar: black bar with logo, title, and menu icon -->
+  <div class="topbar" id="topbar">
+  <div class="logo-area">
+    <a href="index.html" class="home-link">
+      <img src="images/AIfly.png" alt="Logo" class="logo-img" />
+      <span class="firefly-title">FIREFLY</span>
+    </a>
+  </div>
+<!-- From Uiverse.io by vinodjangid07 --> 
+  <button class="Btn-git" onclick="window.open('https://github.com/FireflySpectra/firefly_release', '_blank')">
+    <svg class="svgIcon-git" viewBox="0 0 496 512" height="1.4em" xmlns="https://github.com/FireflySpectra/firefly_release"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+    <span class="text-git">Github</span>
+  </button>
+  <div class="menu-icon" id="menuIcon" tabindex="0" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+    <div class="menu-drawer" id="menuDrawer">
+      <ul>
+        <li><a href=index.html#intro">About</a></li>
+        <li><a href="demofitter.html">FIREFLY Demo</a></li>
+        <li>
+          <a href="index.html#install">Install →</a>
+          <ul>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="configuration.html">Configuration</a></li>
+            <li><a href="start-fitting.html">Start Fitting</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#models">Models</a></li>
+        <li>
+          <a href="index.html#surveys">Surveys →</a>
+          <ul>
+            <li><a href="desi.html">DESI</a></li>
+            <li><a href="sdss.html">SDSS</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="image-credit-wrapper">
+  <header class="hero-desi"></header>
+  <div class="image-credit">
+    Credit: NOIRLab/NSF/AURA/P. Marenfeld — <a href="https://www.desi.lbl.gov/photos/" target="_blank" rel="noopener">CC BY 4.0</a>
+  </div>
+  </div>
+  <header><h1>DESI</h1></header>
+
+
+  <section class="section light"> 
+    <div class="fact-grid">
+    <div class="fact-box">
+      <div class="fact-number">40M</div>
+      <div class="fact-bar"></div>
+      <div class="fact-title">Targets</div>
+      <p-2>Stars, galaxies and quasars to be mapped</p-2>
+    </div>
+    <div class="fact-box">
+      <div class="fact-number">14,000</div>
+      <div class="fact-bar"></div>
+      <div class="fact-title">Square Degrees</div>
+      <p-2>Sky coverage of the DESI survey</p-2>
+    </div>
+    <div class="fact-box">
+      <div class="fact-number">5,000</div>
+      <div class="fact-bar"></div>
+      <div class="fact-title">Fibers</div>
+      <p-2>Simultaneous spectroscopic observations</p-2>
+    </div>
+    <div class="fact-box">
+      <div class="fact-number">z ~ 3.5</div>
+      <div class="fact-bar"></div>
+      <div class="fact-title">Redshift</div>
+      <p-2>Maximum cosmic distance probed</p-2>
+    </div>
+    </div>
+    <div style="text-align: center; margin-top: 20px;"></div>
+    <h2 class="h-left">Survey Overview</h2>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <!--<p>The Dark Energy Spectroscopic Instrument (DESI) is a revolutionary wide-field survey designed to probe cosmology and galaxy evolution. Operating on the Mayall 4-meter telescope at Kitt Peak, DESI uses a 5000-fibre robotic spectrograph to collect over 40 million spectra of galaxies, quasars and stars across ~14,000 deg² of sky. Launched in 2021, its primary goal is to map the large-scale structure for dark energy studies, but it also provides an enormous legacy dataset for galaxy science. DESI’s target selection includes 7 million Milky Way stars, 14 million Bright Galaxy Survey (BGS) galaxies, 7.5 million Luminous Red Galaxies (LRGs), 15.5 million Emission Line Galaxies (ELGs) and 3 million quasars.</p>
+    <p>Compared to SDSS, DESI has far superior instrumentation. It covers an even broader wavelength range (3600-9824 Å) with higher resolution: roughly R≈2000 in the blue end up to R≈5500 at red wavelengths. The new robotic positioner replaces SDSS’s fixed fibre plates, allowing 5000 simultaneous exposures and flexible tiling. Moreover, DESI’s depth and observing strategy yield much higher S/N for faint targets. For example, a 1000 s exposure reaches S/N≈7 on the [O II] doublet in a typical ELG with flux 8×10^–17 erg s^–1 cm^–2, far beyond what SDSS achieved. In practice, DESI routinely attains S/N > 0.5 per Å in 4000 s exposures even for z>2 quasars.</p>
+    <p>These improvements are crucial for galaxy analysis. Higher spectral resolution and S/N mean faint absorption features and continuum shapes are measured more precisely, enabling reliable stellar population fits out to high redshift. By resolving galaxies out to z∼3.5, DESI provides an unprecedented “cosmic time machine” covering much of the Universe’s history. Table 1 (DESI Collaboration et al. 2024) summarises the “Early Data Release” (EDR) footprint: in SV (Survey Validation) mode, DESI obtained ~1.77 million high-quality spectra split among MWS, BGS, LRG, ELG and QSO programs. These data show DESI’s wide sky coverage and breadth of targets, offering a rich sample for stellar population studies. Overall, DESI’s large area, depth and resolution combine to make it a game-changing resource for galaxy evolution research.</p>
+    --> <h2 class="h-left">Why use DESI with FIREFLY</h2>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <!--<p>There are several compelling reasons to apply Firefly to DESI data. First, sheer scale: DESI’s tens of millions of galaxy spectra dwarf SDSS by an order of magnitude, providing vastly better statistics for population trends. This allows weeding out sample variance and studying rare galaxy types that SDSS simply missed. Secondly, spectral quality and range: as noted, DESI’s higher resolution and S/N mean that subtle spectral features (e.g. weak metal lines or Balmer breaks) are detected clearly. This directly improves the precision of Firefly’s recovered ages and metallicities. In fact, studies have found that DESI yields a substantially better determination of low-metallicity tails and SFRs compared to SDSS, thanks to its deeper redshift reach.</p>
+    <p>A key driver of this project was that DESI’s extended redshift coverage (to z∼1.75 or beyond) opens new epochs for full spectral fitting. Firefly had been proven on SDSS, but DESI allows it to work on galaxies well into the cosmic noon era. As Wilkinson et al. (2017) noted, having a broad wavelength range (here UV-to-NIR) is crucial for disentangling age-metallicity-dust degeneracies. DESI supplies exactly that (3600-9800 Å in observed frame), so Firefly can exploit MaStar SSPs across more of the SED.</p>
+    <p>Practically, Firefly had to be adapted for DESI’s data format. The original Firefly initialization script (written for SDSS/FITS) needed modification to parse DESI inputs. In particular, we adjusted FITS header names, set the flux units to 10^–17 erg s^–1 cm^–2 Å^–1, and updated the spectral resolution setting to match DESI (we approximated DESI’s vacuum-frame resolution as a constant R=5000 for fitting purposes). We also compiled metadata (redshift, velocity dispersion, target type) directly from the DESI EDR catalogs into the Firefly input files. A custom Python pipeline (Appendix C) was written to download the DESI spectra and catalogs, stitch together the three spectral arms, and package 5000 galaxies per FITS file for Firefly. In short, by tailoring the input and configuration, Firefly could seamlessly ingest DESI’s coadded spectra and produce fits. The result is a new pipeline capable of processing hundreds of thousands of galaxies with Firefly (about 600k were processed in this work).</p>
+    --> <h2 class="h-left">Results</h2>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <!--<p>DESI Bright Galaxy Survey (BGS) - The BGS targets are low-redshift, high-S/N galaxies (z≲0.6) observed under bright conditions. Our fits to BGS spectra illustrate Firefly’s performance: for example, Figure 4 (see Appendix) shows a typical BGS galaxy spectrum (blue) with the Firefly/MaStar best-fit model (orange) and residuals. In that case, Firefly found an old, quenched stellar population (light-weighted age ≈10.9 Gyr) with slightly sub-solar metallicity ([Z/H]≈-0.25) and low dust E(B-V)≈0.14. The residuals in the UV end of the spectrum are larger, as expected from DESI’s lower resolution there and minor model limits. In general, these fits confirm that Firefly robustly converges for high-S/N spectra.</p>
+    <p>Crucially, the derived parameters reproduce well-known galaxy scaling relations. Figure plots Firefly-derived age, SFR, sSFR and metallicity against stellar mass for the BGS sample (0.2<z<0.4). We clearly see downsizing: more massive galaxies host older stars, implying early quenching for big galaxies. A star-forming main sequence (mass–SFR relation) is apparent at intermediate masses. The specific SFR distribution is bimodal, separating active and passive populations. The mass-metallicity relation rises with mass (massive galaxies are more metal-rich), and an inverse correlation of SFR with metallicity hints at gas inflows fueling starbursts. These trends mirror results from SDSS (Thomas et al. 2005, etc.) but are traced here with even greater precision thanks to DESI’s data. (Placeholder: Figure 4 and 6 showing example spectra and population trends for DESI-BGS.)</p>
+    <p>DESI Early Data Release (EDR) - We also applied Firefly to a wide slice of the SV EDR sample. Out of 600,000 prepared spectra, Firefly successfully fitted 410,696 galaxies across various programs (EDR-bright, EDR-dark, ELG, LRG, etc.). Figure 5 (Appendix) shows another BGS galaxy fit, now highlighting a bimodal metallicity solution: two peaks at sub-solar and solar [Z/H], reflecting distinct star formation bursts. This underscores Firefly’s ability to identify complex enrichment histories. The EDR spans redshifts up to z1.75, much further than SDSS.</p>
+    <p>Figure 7 (Appendix) summarises the spatial and redshift distribution of all ~410k fitted galaxies. The left panel maps them on the sky, showing DESI’s tiling pattern. The right panels show redshift histograms by survey program, with EDR-bright and EDR-dark dominating (median z≈0.51) and ELG/LRG coverage extending to z∼1. This broad redshift span (z≲1.75) means we are probing look-back times where galaxy properties evolve rapidly.</p>
+    <p>Results summary: Across all DESI samples, Firefly recovered the expected evolutionary relationships. Most massive galaxies are older (downsizing), the star-forming main sequence is seen at all z, and galaxies split cleanly into star-forming vs quiescent in SFR–sSFR space. The mass–metallicity relation holds at all redshifts, and high-S/N data even reveal subtle correlations (e.g. lower-metallicity galaxies tend to have higher SFRs). In addition, the Firefly outputs include detailed SFH plots and confidence distributions (as in Figures 4–6) for each galaxy, enabling in-depth studies of individual objects. Overall, Firefly on DESI has produced a large catalogue of stellar parameters, confirming that our method works well at DESI’s scale.</p>
+    --> <h2 class="h-left">Analysis</h2>
+    <p>(Placeholder:</p>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <!--<p>The DESI+Firefly results reveal fundamental insights into galaxy evolution. The persistent downsizing trend (massive galaxies being older) reinforces the picture that big galaxies form stars early and exhaust their gas, whereas smaller galaxies continue forming stars longer. The star-forming main sequence we recover shows that galaxies of a given mass have a relatively tight SFR, but the clear sSFR bimodality tells us many galaxies have essentially shut off star formation while others are actively growing. Crucially, we see how these patterns evolve with redshift: because DESI reaches z∼1.75, we begin to capture the epoch when quiescent galaxies first emerge.</p>
+    <p>The distribution of dust attenuation (E(B-V)) we find also shows bimodality: passive galaxies have very low dust while star-forming ones have higher values. This influences the fitted SFR and age (e.g. red colors in high-z galaxies can be from old stars or dust). By including dust in the fit, Firefly maps out this degeneracy. We also note that DESI’s large sample reveals subtle environmental effects: for example, at fixed mass, galaxies with lower metallicity often have higher SFR, possibly indicating inflow of pristine gas triggering star formation (as suggested in models).</p>
+    <p>In summary, DESI+Firefly recovers the expected scaling relations (downsizing, mass-metallicity, main sequence) with high fidelity. The new output plots (e.g. 2D correlations of mass–metallicity–SFR) highlight that DESI extends these trends to higher masses and lower metallicities than SDSS. As shown in Fig.9 of the dissertation (not included here), the joint distributions of stellar mass, [Z/H], SFR, dust and age are tightly constrained by DESI. Overall, the analysis confirms that DESI’s superior data quality yields a cleaner view of galaxy evolution. For example, the distribution of galaxy metallicities and SFR at a given mass in DESI differs from SDSS (Figure 10 in the thesis), with DESI revealing a more extended low-metallicity tail – highlighting that DESI is probing younger, less enriched systems at high z.</p>
+    <p>(Placeholder: correlation plots of key derived parameters, and histograms of age, metallicity, SFR, etc. A chart comparing DESI and SDSS distributions would also be useful here.)</p>
+    <p>The trends observed tell a coherent story: massive galaxies formed stars earlier (downsizing), lower-mass galaxies remain active longer (leading to the bimodal sSFR), and chemical enrichment tracks galaxy mass (mass–metallicity). DESI’s depth shows these relations holding over a wide cosmic time, providing strong empirical constraints on models of galaxy formation and feedback.</p>
+  --> </section>
+  </div>
+
+
+
+
+
+
+<footer>
+  <div style="max-width:1200px; margin:auto; padding: 20px; display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:20px; font-size:0.95em;">
+    <div>
+      <h4 style="color:#f7ba2b; margin-bottom:8px;">Infomation</h4>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="index.html#intro" style="color:white; text-decoration:none;">About</a></li>
+        <li><a href="index.html#models" style="color:white; text-decoration:none;">Models</a></li>
+        <li><a href="index.html#contact" style="color:white; text-decoration:none;">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 style="color:#f7ba2b; margin-bottom:8px;">Get Started</h4>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="installation.html" style="color:white; text-decoration:none;">Installation</a></li>
+        <li><a href="configuration.html" style="color:white; text-decoration:none;">Configuration</a></li>
+        <li><a href="start-fitting.html" style="color:white; text-decoration:none;">Start Fitting</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 style="color:#f7ba2b; margin-bottom:8px;">Projects</h4>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="publications.html" style="color:white; text-decoration:none;">Publications</a></li>
+        <li><a href="desi.html" style="color:white; text-decoration:none;">DESI</a></li>
+        <li><a href="sdss.html" style="color:white; text-decoration:none;">SDSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div>
+      <h4 style="color:#f7ba2b; margin-bottom:8px;">Data</h4>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="demofitter.html" style="color:white; text-decoration:none;">FIREFLY Demo</a></li>
+        <li><a href="index.html#gallery" style="color:white; text-decoration:none;">Gallery</a></li>
+        <li><a href="index.html#sky-map" style="color:white; text-decoration:none;">Sky Map</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="width:100%;margin:auto;">
+    <canvas id="spectralWidget" style="width:100%;height:auto;"></canvas>
+  </div>
+  <p style="font-size: 0.85em; color: #868686;">
+    &copy; 2025 Samuel Helps (University of Portsmouth) | Code: 
+    <a href="https://ui.adsabs.harvard.edu/abs/2017MNRAS.472.4297W" target="_blank">Wilkinson et al. (2017)</a>, 
+    <a href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.510.1538N" target="_blank">Neumann et al. (2022)</a> |
+    Site & Infrastructure: Samuel Helps |
+    <a href="credits.html">Credits</a>
+  </p>
+  <p style="font-size: 0.85em; color: #868686;">
+    Code licensed under <a href="LICENSE">MIT</a> | Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+  </p>
+</footer>
+
+<script>
+const canvas = document.getElementById('spectralWidget');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 150;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Generate synthetic data and model
+const N = 600;
+let spectrum = new Array(N);
+let model = new Array(N);
+let wavelength = new Array(N);
+for (let i = 0; i < N; i++) {
+    const x = i / N * 10;
+    wavelength[i] = x;
+    spectrum[i] = 15 + 6 * Math.sin(x * 0.6) + Math.random() * 2;
+    model[i] = 15 + 6 * Math.sin(x * 0.6 + 0.1) + Math.random() * 1; // trailing model
+}
+
+let progress = 0;
+const fadeLength = 80; // Number of points over which to fade out
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const margin = 0;
+    const w = canvas.width - 2 * margin;
+    const h = canvas.height - 2 * margin;
+
+    const maxY = Math.max(...spectrum) + 5;
+    const minY = Math.min(...spectrum) - 5;
+
+    const toCanvas = (x, y) => [
+        margin + (x / 10) * w,
+        canvas.height - margin - ((y - minY) / (maxY - minY)) * h
+    ];
+
+    // Draw spectrum with fade
+    ctx.lineWidth = 2;
+    for (let i = Math.max(1, progress - fadeLength); i < progress && i < N; i++) {
+        let alpha = (i - (progress - fadeLength)) / fadeLength; // 0..1 fade factor
+        ctx.strokeStyle = `rgba(70,130,180,${alpha.toFixed(2)})`; // steelblue fade
+
+        ctx.beginPath();
+        const [x0, y0] = toCanvas(wavelength[i - 1], spectrum[i - 1]);
+        const [x1, y1] = toCanvas(wavelength[i], spectrum[i]);
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x1, y1);
+        ctx.stroke();
+    }
+
+    // Draw model with fade
+    for (let i = Math.max(1, progress - fadeLength - 20); i < progress - 20 && i < N; i++) {
+        if(i < 1) continue;
+        let alpha = (i - (progress - fadeLength - 20)) / fadeLength; // same fade factor shifted by delay
+        if(alpha < 0) alpha = 0;
+        if(alpha > 1) alpha = 1;
+
+        ctx.strokeStyle = `rgba(218,165,32,${alpha.toFixed(2)})`; // goldenrod fade
+        ctx.lineWidth = 2;
+
+        ctx.beginPath();
+        const [x0, y0] = toCanvas(wavelength[i - 1], model[i - 1]);
+        const [x1, y1] = toCanvas(wavelength[i], model[i]);
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x1, y1);
+        ctx.stroke();
+    }
+
+    // Increment progress and loop
+    if (progress < N + fadeLength + 20) {
+        progress += 2;
+        requestAnimationFrame(draw);
+    } else {
+        progress = 0; // Loop animation
+        setTimeout(() => requestAnimationFrame(draw), 1000);
+    }
+}
+
+draw();
+</script>
+</body>
+</html>
+
+

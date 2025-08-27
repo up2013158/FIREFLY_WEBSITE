@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Configuration - FIREFLY</title>
+  <link rel="stylesheet" href="css\style.css" />
+  <script src="js\script.js" defer></script>
+</head>
+<body>
+  <!-- Topbar: black bar with logo, title, and menu icon -->
+  <div class="topbar" id="topbar">
+  <div class="logo-area">
+    <a href="index.html" class="home-link">
+      <img src="images/AIfly.png" alt="Logo" class="logo-img" />
+      <span class="firefly-title">FIREFLY</span>
+    </a>
+  </div>
+<!-- From Uiverse.io by vinodjangid07 --> 
+  <button class="Btn-git" onclick="window.open('https://github.com/FireflySpectra/firefly_release', '_blank')">
+    <svg class="svgIcon-git" viewBox="0 0 496 512" height="1.4em" xmlns="https://github.com/FireflySpectra/firefly_release"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+    <span class="text-git">Github</span>
+  </button>
+  <div class="menu-icon" id="menuIcon" tabindex="0" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+    <div class="menu-drawer" id="menuDrawer">
+      <ul>
+        <li><a href=index.html#intro">About</a></li>
+        <li><a href="demofitter.html">FIREFLY Demo</a></li>
+        <li>
+          <a href="index.html#install">Install →</a>
+          <ul>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="configuration.html">Configuration</a></li>
+            <li><a href="start-fitting.html">Start Fitting</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#models">Models</a></li>
+        <li>
+          <a href="index.html#surveys">Surveys →</a>
+          <ul>
+            <li><a href="desi.html">DESI</a></li>
+            <li><a href="sdss.html">SDSS</a></li>
+          </ul>
+        </li>
+        <li><a href="index.html#gallery">Gallery</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="image-credit-wrapper">
+  <header class="hero-sdss"></header>
+  <div class="image-credit">
+    Credit: SDSS/David Law — <a href="https://www.sdss.org/science/image-gallery/" target="_blank" rel="noopener">CC BY 4.0</a>
+  </div>
+  </div>
+
+  <header><h1>SDSS</h1></header>
+  <section class="section light">
+    <div style="text-align: center; margin-top: 20px;"></div>
+    <h2 class="h-left">Survey Overview</h2>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <!--<p>The Sloan Digital Sky Survey (SDSS) is a foundational astronomical survey that began in the 2000s. Using a 2.5m telescope and fiber-fed spectrographs, SDSS mapped the sky in imaging and obtained spectra for millions of galaxies and quasars. Its spectroscopic programme (SDSS I-IV) used plug-plate cartridges with hundreds of fixed fibres on each plate, covering roughly 3800-9200 Å at R∼2000 (though coarser resolution than DESI). SDSS produced the first large, uniform catalogues of galaxy stellar populations, revolutionising galaxy evolution studies (e.g. Tremonti et al. 2004, Thomas et al. 2005). It remains the most cited astronomical survey of all time. SDSS data releases (e.g. DR17) provide calibrated spectra for on the order of a million galaxies (over z~0-0.3).</p>
+    <ul>
+      <li>SDSS has provided spectra for ..... million of celestial objects, enabling detailed analysis of their properties.</li>
+    </ul>
+    --> <h2 class="h-left">FIREFLY and SDSS</h2>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <!--<p>Firefly was originally developed and validated with SDSS data. SDSS's large spectroscopic sample was the ideal testbed: uniform data format, well-calibrated spectra, and many previous results for comparison. In practice, FIREFLY fits on SDSS DR14/DR17 spectra have confirmed it can robustly recover ages, [Z/H] and masses across a wide range of galaxy types. The main differences between SDSS and DESI data are instrumental: SDSS used fixed fibre plates (576-640 fibres per plate), whereas DESI employs a robotic fibre positioning with 5000 fibres. SDSS spectra typically have lower S/N for faint targets compared to DESI; for example, DESI routinely reaches S/N≈7 for [O II] in similar galaxies where SDSS would struggle. SDSS also covered a smaller area and redshift range.</p>
+    <p>Because of these differences, Firefly runs on SDSS were somewhat simpler (smaller dataset, no need to parallelise to SCIAMA scale). The basic setup - MaStar SSPs, Kroupa IMF, dust law - is the same. Overall, applying Firefly to SDSS provided the initial “check” that the code works and that systematic biases are understood. The excellent agreement of DESI results with known SDSS trends (downsizing, main sequence, etc.) confirms that FIREFLY's performance is consistent across surveys. Future work will use FIREFLY's SDSS outputs (e.g. Chapman 2024) to directly compare samples.</p>
+    --> <h2 class="h-left">Results</h2>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <!--<p>(Results of Firefly applied to SDSS data are forthcoming and will be supplied here.)</p>
+    --> <h2 class="h-left">Analysis</h2>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <p>......coming soon......</p>
+    <!--<p>(Placeholder: Comparative analysis will be added. Future content should compare SDSS and DESI trends, for example highlighting how DESI extends mass and metallicity ranges (see Chapman 2024) or comparing sSFR distributions (see Trussler et al. 2020). Detailed comparisons with published SDSS full-spectral fitting catalogs will illustrate the impact of DESI's higher resolution and depth.)</p>
+  --> </section>
+  </div>
+<footer>
+  <div style="max-width:1200px; margin:auto; padding: 20px; display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:20px; font-size:0.95em;">
+    <div>
+      <h4 style="color:#f7ba2b; margin-bottom:8px;">Infomation</h4>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="index.html#intro" style="color:white; text-decoration:none;">About</a></li>
+        <li><a href="index.html#models" style="color:white; text-decoration:none;">Models</a></li>
+        <li><a href="index.html#contact" style="color:white; text-decoration:none;">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 style="color:#f7ba2b; margin-bottom:8px;">Get Started</h4>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="installation.html" style="color:white; text-decoration:none;">Installation</a></li>
+        <li><a href="configuration.html" style="color:white; text-decoration:none;">Configuration</a></li>
+        <li><a href="start-fitting.html" style="color:white; text-decoration:none;">Start Fitting</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 style="color:#f7ba2b; margin-bottom:8px;">Projects</h4>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="publications.html" style="color:white; text-decoration:none;">Publications</a></li>
+        <li><a href="desi.html" style="color:white; text-decoration:none;">DESI</a></li>
+        <li><a href="sdss.html" style="color:white; text-decoration:none;">SDSS</a></li>
+        
+      </ul>
+    </div>
+
+    <div>
+      <h4 style="color:#f7ba2b; margin-bottom:8px;">Data</h4>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li><a href="demofitter.html" style="color:white; text-decoration:none;">FIREFLY Demo</a></li>
+        <li><a href="index.html#gallery" style="color:white; text-decoration:none;">Gallery</a></li>
+        <li><a href="index.html#sky-map" style="color:white; text-decoration:none;">Sky Map</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="width:100%;margin:auto;">
+    <canvas id="spectralWidget" style="width:100%;height:auto;"></canvas>
+  </div>
+  <p style="font-size: 0.85em; color: #868686;">
+    &copy; 2025 Samuel Helps (University of Portsmouth) | Code: 
+    <a href="https://ui.adsabs.harvard.edu/abs/2017MNRAS.472.4297W" target="_blank">Wilkinson et al. (2017)</a>, 
+    <a href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.510.1538N" target="_blank">Neumann et al. (2022)</a> |
+    Site & Infrastructure: Samuel Helps |
+    <a href="credits.html">Credits</a>
+  </p>
+  <p style="font-size: 0.85em; color: #868686;">
+    Code licensed under <a href="LICENSE">MIT</a> | Content licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+  </p>
+</footer>
+
+<script>
+const canvas = document.getElementById('spectralWidget');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 150;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Generate synthetic data and model
+const N = 600;
+let spectrum = new Array(N);
+let model = new Array(N);
+let wavelength = new Array(N);
+for (let i = 0; i < N; i++) {
+    const x = i / N * 10;
+    wavelength[i] = x;
+    spectrum[i] = 15 + 6 * Math.sin(x * 0.6) + Math.random() * 2;
+    model[i] = 15 + 6 * Math.sin(x * 0.6 + 0.1) + Math.random() * 1; // trailing model
+}
+
+let progress = 0;
+const fadeLength = 80; // Number of points over which to fade out
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const margin = 0;
+    const w = canvas.width - 2 * margin;
+    const h = canvas.height - 2 * margin;
+
+    const maxY = Math.max(...spectrum) + 5;
+    const minY = Math.min(...spectrum) - 5;
+
+    const toCanvas = (x, y) => [
+        margin + (x / 10) * w,
+        canvas.height - margin - ((y - minY) / (maxY - minY)) * h
+    ];
+
+    // Draw spectrum with fade
+    ctx.lineWidth = 2;
+    for (let i = Math.max(1, progress - fadeLength); i < progress && i < N; i++) {
+        let alpha = (i - (progress - fadeLength)) / fadeLength; // 0..1 fade factor
+        ctx.strokeStyle = `rgba(70,130,180,${alpha.toFixed(2)})`; // steelblue fade
+
+        ctx.beginPath();
+        const [x0, y0] = toCanvas(wavelength[i - 1], spectrum[i - 1]);
+        const [x1, y1] = toCanvas(wavelength[i], spectrum[i]);
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x1, y1);
+        ctx.stroke();
+    }
+
+    // Draw model with fade
+    for (let i = Math.max(1, progress - fadeLength - 20); i < progress - 20 && i < N; i++) {
+        if(i < 1) continue;
+        let alpha = (i - (progress - fadeLength - 20)) / fadeLength; // same fade factor shifted by delay
+        if(alpha < 0) alpha = 0;
+        if(alpha > 1) alpha = 1;
+
+        ctx.strokeStyle = `rgba(218,165,32,${alpha.toFixed(2)})`; // goldenrod fade
+        ctx.lineWidth = 2;
+
+        ctx.beginPath();
+        const [x0, y0] = toCanvas(wavelength[i - 1], model[i - 1]);
+        const [x1, y1] = toCanvas(wavelength[i], model[i]);
+        ctx.moveTo(x0, y0);
+        ctx.lineTo(x1, y1);
+        ctx.stroke();
+    }
+
+    // Increment progress and loop
+    if (progress < N + fadeLength + 20) {
+        progress += 2;
+        requestAnimationFrame(draw);
+    } else {
+        progress = 0; // Loop animation
+        setTimeout(() => requestAnimationFrame(draw), 1000);
+    }
+}
+
+draw();
+</script>
+</body>
+</html>

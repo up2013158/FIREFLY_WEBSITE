@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FIREFLY Spectral Fitting Animation - Improved</title>
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .scene {
+      width: 900px;
+      height: 450px;
+      padding: 30px;
+      border-radius: 10px;
+      background: black;
+      border: 1px solid #333;
+      position: relative;
+      box-sizing: border-box;
+      overflow: visible;
+      user-select: none;
+    }
+
+    /* Galaxy fade-in */
+    .galaxy {
+      width: 100px;
+      height: 100px;
+      background-image: url('images/galaxy24.png');
+      background-size: cover;
+      border-radius: 50%;
+      margin: 0 auto 20px auto;
+      opacity: 0;
+      transition: opacity 1.2s ease-in;
+    }
+    .galaxy.visible {
+      opacity: 1;
+    }
+
+    /* Beam container holds pieces */
+    .beam-container {
+      width: 100%;
+      height: 14px;
+      margin: 0 auto 25px auto;
+      display: flex;
+      gap: 2px;
+      opacity: 0;
+      user-select: none;
+    }
+
+    /* Each beam piece starts collapsed and expands horizontally */
+    .beam-piece {
+      flex: 1 1 0;
+      background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+      border-radius: 5px;
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform 0.6s ease;
+    }
+    .beam-piece.visible {
+      transform: scaleX(1);
+    }
+
+    /* Spectrum container: hold SVG, initially invisible */
+    .spectrum-container {
+      width: 100%;
+      height: 320px;
+      position: relative;
+      opacity: 0;
+      transition: opacity 1s ease;
+      user-select: none;
+    }
+    .spectrum-container.visible {
+      opacity: 1;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Axes styles */
+    line.axis {
+      stroke: #555;
+      stroke-width: 1.5;
+      shape-rendering: crispEdges;
+    }
+    text.axis-label {
+      fill: #ccc;
+      font-size: 14px;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Data and models */
+    polyline {
+      fill: none;
+      stroke-width: 2;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+    .data-line {
+      stroke: steelblue;
+    }
+    .model-line {
+      stroke: goldenrod;
+      opacity: 0;
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      transition: opacity 0.5s ease;
+    }
+    .residual-line {
+      stroke: black;
+      stroke-width: 1.5;
+      opacity: 0;
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+    }
+
+    /* Chi-square style */
+    .chi-square {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 18px;
+      font-weight: bold;
+      color: goldenrod;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      user-select: none;
+    }
+    .chi-best {
+      color: #32cd32; /* LimeGreen */
+    }
+
+    /* Properties box */
+    .properties {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+      margin-top: 20px;
+      padding: 14px 20px;
+      background: #222;
+      border-left: 5px solid #32cd32;
+      border-radius: 6px;
+      color: #eee;
+      font-size: 14px;
+      user-select: none;
+    }
+    .properties.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div id="galaxy" class="galaxy" title="Galaxy"></div>
+
+    <div id="beamContainer" class="beam-container" aria-label="Color Spectrum Beam">
+      <!-- 15 pieces to form the beam -->
+      <div class="beam-piece" style="background: violet;"></div>
+      <div class="beam-piece" style="background: indigo;"></div>
+      <div class="beam-piece" style="background: blue;"></div>
+      <div class="beam-piece" style="background: #0a7bdc;"></div>
+      <div class="beam-piece" style="background: #00a854;"></div>
+      <div class="beam-piece" style="background: #a2d249;"></div>
+      <div class="beam-piece" style="background: #f6ee20;"></div>
+      <div class="beam-piece" style="background: #f7ba2b;"></div>
+      <div class="beam-piece" style="background: #ea8f2e;"></div>
+      <div class="beam-piece" style="background: #ea5b3f;"></div>
+      <div class="beam-piece" style="background: #e83e44;"></div>
+      <div class="beam-piece" style="background: #dc3237;"></div>
+      <div class="beam-piece" style="background: #c81d2f;"></div>
+      <div class="beam-piece" style="background: #9d1825;"></div>
+      <div class="beam-piece" style="background: #740f1a;"></div>
+    </div>
+
+    <div id="spectrumContainer" class="spectrum-container" aria-label="Galaxy Spectrum Graph">
+      <svg viewBox="0 0 900 320" preserveAspectRatio="none" role="img" aria-labelledby="title desc">
+        <title>Galaxy Spectrum with Models and Residuals</title>
+        <desc>A plot showing galaxy observed spectrum in blue and successive model fits in goldenrod lines with residuals in black.</desc>
+
+        <!-- Axes: y-axis line stops exactly at x-axis -->
+        <line class="axis" x1="60" y1="30" x2="60" y2="270"/>
+        <line class="axis" x1="60" y1="270" x2="880" y2="270"/>
+        <text x="10" y="55" class="axis-label">Flux</text>
+        <text x="780" y="295" class="axis-label">Wavelength</text>
+
+        <!-- Observed Data (blue) with many points for smoothness -->
+        <polyline class="data-line"
+          points="
+            60,148 90,143 120,147 150,139 180,144 210,138 240,145 270,135 300,140
+            330,137 360,145 390,138 420,146 450,140 480,147 510,142 540,150 570,145
+            600,152 630,148 660,155 690,150 720,158 750,152 780,159 810,155 840,161 870,157 880,160
+          "
+        />
+
+        <!-- Models with smoother curves -->
+        <polyline id="model1" class="model-line"
+          points="
+            60,150 90,144 120,148 150,140 180,145 210,139 240,146 270,136 300,141
+            330,138 360,146 390,139 420,147 450,141 480,148 510,143 540,151 570,146
+            600,153 630,149 660,156 690,151 720,159 750,153 780,160 810,156 840,162 870,158 880,161
+          "
+        />
+        <polyline id="model2" class="model-line"
+          points="
+            60,146 90,142 120,145 150,138 180,143 210,137 240,144 270,134 300,139
+            330,136 360,144 390,137 420,145 450,139 480,146 510,141 540,149 570,144
+            600,151 630,147 660,154 690,149 720,157 750,151 780,158 810,154 840,160 870,156 880,159
+          "
+        />
+        <polyline id="model3" class="model-line"
+          points="
+            60,143 90,141 120,143 150,137 180,142 210,136 240,143 270,132 300,137
+            330,134 360,142 390,135 420,143 450,137 480,144 510,139 540,147 570,142
+            600,149 630,145 660,152 690,147 720,155 750,149 780,156 810,152 840,158 870,154 880,157
+          "
+        />
+        <polyline id="model4" class="model-line"
+          points="
+            60,139 90,138 120,140 150,135 180,139 210,134 240,140 270,130 300,135
+            330,132 360,139 390,134 420,140 450,135 480,140 510,137 540,143 570,139
+            600,146 630,141 660,148 690,143 720,150 750,144 780,150 810,146 840,152 870,148 880,150
+          "
+        />
+        <polyline id="model5" class="model-line"
+          points="
+            60,136 90,136 120,138 150,133 180,137 210,132 240,138 270,128 300,134
+            330,130 360,137 390,132 420,138 450,133 480,138 510,135 540,141 570,137
+            600,143 630,139 660,145 690,141 720,147 750,142 780,147 810,143 840,148 870,144 880,146
+          "
+        />
+
+        <!-- Residuals below x-axis -->
+        <polyline id="residual1" class="residual-line"
+          points="
+            60,270 90,273 120,271 150,274 180,270 210,275 240,268 270,275 300,269
+            330,276 360,270 390,274 420,269 450,273 480,268 510,272 540,267 570,271
+            600,267 630,270 660,267 690,270 720,266 750,271 780,266 810,270 840,266 870,270 880,266
+          "
+        />
+        <polyline id="residual2" class="residual-line"
+          points="
+            60,273 90,276 120,274 150,277 180,273 210,278 240,271 270,278 300,272
+            330,279 360,273 390,277 420,272 450,276 480,271 510,275 540,270 570,274
+            600,270 630,273 660,270 690,273 720,269 750,274 780,269 810,273 840,269 870,273 880,269
+          "
+        />
+        <polyline id="residual3" class="residual-line"
+          points="
+            60,276 90,279 120,277 150,280 180,276 210,281 240,274 270,281 300,275
+            330,282 360,276 390,280 420,275 450,279 480,274 510,278 540,273 570,277
+            600,273 630,276 660,273 690,276 720,272 750,277 780,272 810,276 840,272 870,276 880,272
+          "
+        />
+        <polyline id="residual4" class="residual-line"
+          points="
+            60,279 90,282 120,280 150,283 180,279 210,284 240,277 270,284 300,278
+            330,285 360,279 390,283 420,278 450,282 480,277 510,281 540,276 570,280
+            600,276 630,279 660,276 690,279 720,275 750,280 780,275 810,279 840,275 870,279 880,275
+          "
+        />
+        <polyline id="residual5" class="residual-line"
+          points="
+            60,282 90,285 120,283 150,286 180,282 210,287 240,280 270,287 300,281
+            330,288 360,282 390,286 420,281 450,285 480,280 510,284 540,279 570,283
+            600,279 630,282 660,279 690,282 720,278 750,283 780,278 810,282 840,278 870,282 880,278
+          "
+        />
+      </svg>
+
+      <!-- Chi-square text overlays -->
+      <div id="chi1" class="chi-square" style="top: 12px; right: 25px;">χ² = 35.4</div>
+      <div id="chi2" class="chi-square" style="top: 12px; right: 25px;">χ² = 28.7</div>
+      <div id="chi3" class="chi-square" style="top: 12px; right: 25px;">χ² = 22.9</div>
+      <div id="chi4" class="chi-square" style="top: 12px; right: 25px;">χ² = 15.3</div>
+      <div id="chi5" class="chi-square chi-best" style="top: 12px; right: 25px;">χ² = 6.1 (Best)</div>
+    </div>
+
+    <div id="properties" class="properties" aria-live="polite" aria-atomic="true">
+      <strong>Best Model Properties:</strong><br />
+      Stellar Age: 5.3 Gyr<br />
+      Metallicity: Z=0.02<br />
+      Velocity Dispersion: 150 km/s<br />
+      SNR: 40
+    </div>
+  </div>
+
+  <script>
+    const galaxy = document.getElementById('galaxy');
+    const beamContainer = document.getElementById('beamContainer');
+    const beamPieces = Array.from(beamContainer.children);
+    const spectrumContainer = document.getElementById('spectrumContainer');
+
+    const models = [
+      document.getElementById('model1'),
+      document.getElementById('model2'),
+      document.getElementById('model3'),
+      document.getElementById('model4'),
+      document.getElementById('model5')
+    ];
+    const residuals = [
+      document.getElementById('residual1'),
+      document.getElementById('residual2'),
+      document.getElementById('residual3'),
+      document.getElementById('residual4'),
+      document.getElementById('residual5')
+    ];
+    const chis = [
+      document.getElementById('chi1'),
+      document.getElementById('chi2'),
+      document.getElementById('chi3'),
+      document.getElementById('chi4'),
+      document.getElementById('chi5')
+    ];
+    const properties = document.getElementById('properties');
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function animateDrawErase(polyline, drawDuration, eraseDuration, delayBeforeErase) {
+      return new Promise(resolve => {
+        const length = polyline.getTotalLength();
+        polyline.style.transition = 'none';
+        polyline.style.strokeDasharray = length;
+        polyline.style.strokeDashoffset = length;
+        polyline.style.opacity = 1;
+
+        // Trigger draw
+        requestAnimationFrame(() => {
+          polyline.style.transition = `stroke-dashoffset ${drawDuration}ms linear`;
+          polyline.style.strokeDashoffset = '0';
+        });
+
+        setTimeout(() => {
+          // Pause then erase
+          setTimeout(() => {
+            polyline.style.transition = `stroke-dashoffset ${eraseDuration}ms linear`;
+            polyline.style.strokeDashoffset = length;
+          }, delayBeforeErase);
+        }, drawDuration);
+
+        // Resolve after total time
+        setTimeout(() => {
+          polyline.style.opacity = 0;
+          resolve();
+        }, drawDuration + delayBeforeErase + eraseDuration);
+      });
+    }
+
+    function animateDrawKeep(polyline, duration) {
+      return new Promise(resolve => {
+        const length = polyline.getTotalLength();
+        polyline.style.transition = 'none';
+        polyline.style.strokeDasharray = length;
+        polyline.style.strokeDashoffset = length;
+        polyline.style.opacity = 1;
+
+        requestAnimationFrame(() => {
+          polyline.style.transition = `stroke-dashoffset ${duration}ms linear`;
+          polyline.style.strokeDashoffset = '0';
+        });
+
+        setTimeout(() => {
+          resolve();
+        }, duration);
+      });
+    }
+
+    async function animateBeam() {
+      beamContainer.style.opacity = 1;
+      // Animate beam pieces one by one with delay
+      for (let i = 0; i < beamPieces.length; i++) {
+        beamPieces[i].classList.add('visible');
+        await sleep(100);
+      }
+      await sleep(600); // slight pause before next step
+    }
+
+    async function runAnimationSequence() {
+      // Hide all lines, chis, properties initially
+      models.forEach(m => {
+        m.style.opacity = 0;
+        m.style.strokeDashoffset = m.getTotalLength();
+      });
+      residuals.forEach(r => {
+        r.style.opacity = 0;
+        r.style.strokeDashoffset = r.getTotalLength();
+      });
+      chis.forEach(c => c.style.opacity = 0);
+      properties.classList.remove('visible');
+
+      // Step 1: Fade in galaxy
+      galaxy.classList.add('visible');
+      await sleep(1200);
+
+      // Step 2: Animate beam spectrum forming piecewise
+      await animateBeam();
+
+      // Step 3: Fade in spectrum container (axes + spectra)
+      spectrumContainer.classList.add('visible');
+      await sleep(1100);
+
+      // Step 4: Animate first 4 models with draw + erase + chi fade in/out
+      const drawDuration = 1800;
+      const eraseDuration = 1400;
+      const delayBeforeErase = 700;
+
+      for (let i = 0; i < 4; i++) {
+        chis[i].style.opacity = 1;
+        await Promise.all([
+          animateDrawErase(models[i], drawDuration, eraseDuration, delayBeforeErase),
+          animateDrawErase(residuals[i], drawDuration, eraseDuration, delayBeforeErase)
+        ]);
+        chis[i].style.opacity = 0;
+      }
+
+      // Step 5: Animate best model draw and residual draw (keep visible)
+      chis[4].style.opacity = 1;
+      await Promise.all([
+        animateDrawKeep(models[4], drawDuration),
+        animateDrawKeep(residuals[4], drawDuration)
+      ]);
+
+      // Step 6: Fade in properties box
+      setTimeout(() => {
+        properties.classList.add('visible');
+      }, 500);
+    }
+
+    runAnimationSequence();
+  </script>
+</body>
+</html>
