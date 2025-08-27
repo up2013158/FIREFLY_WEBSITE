@@ -1303,7 +1303,7 @@ header.hero-desi {
 .fact-bar {
   width: 100px;
   height: 6px;
-  background-color: #800000;
+  background-color: #f7ba2b;
   margin: 0.5rem auto;
   border-radius: 3px;
 }
@@ -1445,5 +1445,6 @@ img, svg {
   max-width: 100%;
   height: auto;
 }
+
 
 
